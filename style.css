@@ -1,0 +1,389 @@
+/*
+  Theme Name: Ice Cream Eater
+  Theme URI: http://wp-builder.info
+  Description: The Yummiest Theme Ever
+  Version: 1.0
+  Author: Scott Sawyer
+*/
+
+/** Base styles **/
+:root {
+	--color-red: #cc2d30;
+	--color-blue: #9bdbc1;
+	--color-yellow: #efe8ad;
+	--color-green: #aadd96;
+	--color-pink: #e8a5af;
+	--color-lightgray: #dedede;
+	--color-darkgray: #7a7a7a;
+	--color-black: #070707;
+	--radius: 8px;
+	--shadow: .75rem .75rem 1.75rem 0 var(--color-lightgray);;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: "Open Sans", "Tahoma", sans-serif;
+    min-height: 100vh;
+    color: var(--color-black);
+}
+
+p {
+	margin-top: 0;
+}
+input {
+	border-radius: var(--radius);
+	padding: .25rem .5rem;
+}
+.button, input[type="submit"] {
+	background-color: var(--color-blue);
+	display: inline-block;
+	padding: .25rem .5rem;
+	border-radius: var(--radius);
+	text-decoration: none;
+	color: var(--color-black);
+	border-width: 0;
+}
+.button:hover,
+input[type="submit"]:hover {
+	opacity: .8;
+}
+
+/** Utilities **/
+.screen-reader {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0,0,0,0);
+	border: 0;
+}
+
+@media screen and ( min-width: 768px ) {
+	.hide-for-medium {
+		display: none;
+	}
+}
+
+
+/** Components **/
+
+.menu-toggle {
+	color: var(--color-black);
+	text-decoration: none;
+	border: 1px solid var(--color-darkgray);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: .15rem;
+	border-radius: var(--radius);
+	font-size: 1rem;
+	line-height: 1;
+	width: 2rem;
+	height: 2rem;
+	font-size: 2rem;
+}
+.menu-toggle.menu-close {
+	position: absolute;
+	right: 1rem;
+	top: 1rem;
+}
+
+@media screen and ( min-width: 768px ) {
+	.menu-toggle {
+		display: none;
+	}
+}
+.panel {
+	padding: 1rem;
+	box-shadow: var(--shadow);
+	border-radius: var(--radius);
+	margin: 1rem 1rem 2rem 1rem;
+	background-color: white;
+}
+
+/** Layout **/
+
+.page-header {
+	position: sticky;
+	top: 0;
+	display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: var(--color-blue);
+    padding: 1rem;	
+}
+
+@media screen and ( min-width: 768px ) {
+	.page-header {
+		flex-direction: row;
+	}
+}
+
+.branding {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+.site-logo {
+	width: auto;
+	height: 40px;
+	padding: 0 1rem;
+}
+.site-name {
+	font-size: 1.5rem;
+	margin: 0;
+}
+
+.site-name a {
+	text-decoration: none;
+	color: var(--color-black);
+}
+
+.header-menu {
+	align-items: center;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	width: 100%;
+	overflow-x: visible;
+	overflow-y: scroll;
+	transform: translateY(-100%);
+	transition: transform 0.3s ease;
+	z-index: 999;
+	background-color: var(--color-blue);
+}
+
+.header-menu:target {
+	display: block;
+	transform: translateY(0);
+	outline: none;
+}
+
+@media screen and ( min-width: 768px ) {
+	.header-menu {
+		position: static;
+		height: inherit;
+		transform: translateY(0);
+		overflow-y: inherit;
+		width: auto;
+	}
+}
+.header-menu .menu,
+.header-menu ul {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: start-end;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.header-menu .menu a {
+	text-decoration: none;
+	color: var(--color-black);
+	padding: 1rem;
+	display: block;
+}
+
+.header-menu .current-menu-item a {
+	font-weight: bold;
+}
+
+@media screen and ( min-width: 768px ) {
+	.header-menu .menu,
+	.header-menu ul {
+		justify-content: flex-end;
+	}	
+}
+
+.page-content {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+
+.main-content {
+	padding: 1rem;
+	color: var(--color-darkgray);
+}
+
+.main-sidebar {
+	padding: 1rem;
+	background-color: var(--color-pink);
+}
+
+@media screen and ( min-width: 768px ) {
+	.page-content {
+		flex-direction: row;
+	}
+	.main-content {
+		width: calc(2/3 * 100%);
+	}
+	.main-sidebar {
+		width: calc(1/3 * 100%);
+	}
+}
+
+.page-footer {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: flex-start;
+	background-color: var(--color-yellow);
+	padding: 1rem;
+}
+@media screen and ( min-width: 768px ) {
+	.page-footer {
+		flex-direction: row;
+	}
+}
+
+.footer-menu {
+	padding: 1rem;
+}
+
+.footer-menu .menu,
+.footer-menu ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.footer-menu .menu a {
+	color: var(--color-black);
+	text-decoration: none;
+	padding: 0.5rem;
+	display: block;
+}
+
+.location-address {
+	padding: 1rem;
+	width: 100%;
+	text-align: center;
+	box-sizing: border-box;
+}
+
+.location-contact-information {
+	padding: 1rem;
+	width: 100%;
+	text-align: center;
+	box-sizing: border-box;
+}
+
+.location-contact-information p {
+	margin-top: 0;
+}
+
+.location-contact-information a {
+	text-decoration: none;
+	color: var(--color-black);
+}
+
+@media screen and ( min-width: 768px ) {
+	.location-address {
+		width: 50%;
+	}
+	.location-contact-information {
+		width: 50%;
+	}
+}
+
+/** Taxonomy: Flavors **/
+.ice-cream-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	margin-bottom: 1rem;
+}
+
+.ice-cream-list li {
+	display: grid;
+	grid-gap: 1rem;
+	grid-template-columns: 1fr;
+	grid-template-areas:
+		"thumb"
+		"title"
+		"excerpt"
+		"more";
+	box-shadow: var(--shadow);
+	border-radius: var(--radius);
+	padding: 1rem;
+}
+
+
+.ice-cream-list .ice-cream-image {
+	grid-area: thumb;
+	border-radius: var(--radius);
+	justify-self: center;
+}
+
+.ice-cream-list .title {
+	margin-top: 0;
+	grid-area: title;
+	text-align: center;
+}
+
+.ice-cream-list .excerpt {
+	grid-area: excerpt;
+}
+
+.ice-cream-list .button-wrapper {
+	grid-area: more;
+}
+
+@media screen and ( min-width: 768px ) {
+	.ice-cream-list li {
+		grid-template-columns: 1fr 3fr;
+		grid-template-areas:
+			"thumb title"
+			"thumb excerpt"
+			"thumb more";	
+	}
+	.ice-cream-list .title {
+		text-align: left;
+	}
+}
+/** Post Type: Ice Cream **/
+
+.additional-info {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+}
+
+.ice-cream-header {
+	display: grid;
+}
+.ice-cream-image {
+	border-radius: var(--radius);
+}
+.ice-cream-image figcaption {
+	font-size: .8rem;
+}
+
+.ice-cream-title {
+	margin-top: 0;
+}
+
+@media screen and ( min-width: 1024px ) {
+	.ice-cream-header {
+		grid-template-rows: 1fr 3fr;
+		grid-template-areas: 
+			"image title"
+			"image content";
+	}
+	.ice-cream-title {
+		grid-area: title;
+	}
+	.ice-cream-content {
+		grid-area: content;
+	}
+	.ice-cream-image {
+		grid-area: image;
+	}
+}
